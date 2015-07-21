@@ -4,6 +4,10 @@
 </div>
 
 <form action="" method="post">
+    {{ form }}
     {% csrf_token %}
+    {% for field in form.visible_fields %}
+        {{ field }}
+    {% endfor %}
     <input type="submit" value="Submit" />
 </form>
