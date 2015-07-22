@@ -12,13 +12,20 @@
     <div class="container-fluid">
         its a templated thing
     </div>
-    <form action="" method="post">
-        {{ form }}
-        {% csrf_token %}
-        {% for field in form.visible_fields %}
-            {{ field }}
-        {% endfor %}
-        <input type="submit" value="Submit" />
-    </form>
+    <div class="container-fluid" id="form-container">
+        <form action="/" method="post">
+            {% csrf_token %}
+            {% for field in form.visible_fields %}
+                {{ field.label }} <br />
+                {{ field }}
+                <br />
+            {% endfor %}
+            <br/>
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+    <div id="results">
+        {{ results }}
+    </div>
 </body>
 </html>
