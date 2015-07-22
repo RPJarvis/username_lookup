@@ -17,10 +17,9 @@ def index(request):
         if form.is_valid():
             form.save()
 
-            return index(request)
+            results = {}
+            context = {'form': form, 'results': results,}
 
-        context = RequestContext(request, {})
-
-        return render(request, 'lookup_form/index.html', context)
+            return render(request, 'lookup_form/index.html', context)
 
 
