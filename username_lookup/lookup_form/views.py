@@ -12,9 +12,15 @@ def index(request):
         return render(request, 'lookup_form/index.html', context)
 
     elif request.method == 'POST':
-        template = loader.get_template('lookup_form/index.html')
+        form = Username_Query(request.POST)
+
+        if form.is_valid():
+            form.save()
+
+            return index(request)
+
         context = RequestContext(request, {})
 
-        return HttpResponse(template.render(context))
+        return render(request, 'lookup_form/index.html', context)
 
 

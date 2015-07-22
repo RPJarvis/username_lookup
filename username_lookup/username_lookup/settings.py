@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'lookup_form'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -96,8 +97,19 @@ USE_L10N = True
 
 USE_TZ = True
 
+SETTINGS_DIR = os.path.dirname(__file__)
 
+PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
+PROJECT_PATH = os.path.abspath(PROJECT_PATH)
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
+
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    STATIC_PATH,
+)
+
+STATIC_ROOT = PROJECT_PATH + '/static_files'
