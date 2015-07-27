@@ -6,6 +6,9 @@ import json
 from .forms import Username_Query_Form
 from lookup_form import common
 # Create your views here.
+            #062979
+            #010037754
+            #print(results[beg_flag:end_flag])
 
 def index(request):
     context = RequestContext(request)
@@ -13,20 +16,18 @@ def index(request):
         form = Username_Query_Form(request.POST)
 
         if form.is_valid():
-            #TODO:probably have to uncomment htis below or something i dunno
-            #form.save()
             user_birthdate = form.cleaned_data['birthdate']
             user_id = form.cleaned_data['id']
-            response_data = {}
-            results = search(build_query(user_birthdate, user_id))
-            #response_data['results'] = results
+            results = str(search(build_query(user_birthdate, user_id)))
             if results == '':
                 results = 'That didnt work'
 
-            context_dict = {'form': form, 'results': results,}
+            beg_flag = results.find('mail') + 9
+            print(beg_flag)
+            end_flag = results.find('@cnm.edu')
+            result = results[beg_flag:end_flag]
+            context_dict = {'form': form, 'result': result,}
 
-            #it might be better to have search as its own url call but leave the data decoupld
-            #in order to pass it in to the search function
             return render_to_response('lookup_form/index.html', context_dict, context)
         else:
             #TODO:make this less dumb
@@ -40,13 +41,13 @@ def index(request):
 
         return render_to_response('lookup_form/index.html', context_dict, context)
 
-        #TODO:else
-
 
 def build_query(user_birthdate, user_id):
-    birthdate_query = '(extensionattribute4=' + str(user_birthdate) + ')'
-    id_query = '(cn=' + str(user_id) + ')'
-    final_query = '(&(objectClass=person)' + birthdate_query + id_query + ')'
+    #TODO: why is this chopping a digit?
+    birthdate_query = '(extensionAttribute4=' + str(0) + str(user_birthdate) + ')'
+    id_query = '(employeeID=' + str(0) + str(user_id) + ')'
+    #010482287
+    final_query = '(&(objectClass=person)' + id_query + birthdate_query + ')'
 
     return final_query
 
