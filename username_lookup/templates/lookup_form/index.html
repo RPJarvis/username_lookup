@@ -3,6 +3,11 @@
 <html lang="en">
 <head>
     <link href="{% static "css/bootstrap.css" %}" rel="stylesheet" media="screen" />
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link rel='shortcut icon' href='{% static "images/favicon.ico" %}' />
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet" media="screen">
+    <link href="{% static "css/styles.css" %}" rel="stylesheet" media="screen">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="author" content="Ryan Jarvis RJarvis1@cnm.edu">
@@ -10,23 +15,35 @@
 </head>
 <body>
     <div class="container-fluid">
-        its a templated thing
+        <div id="header" class="row">
+                <a href="https://www.cnm.edu" role="navigation">
+                    <img class="align_center" alt="Link to CNM Homepage" src="{% static "images/cnm-logo.png" %}">
+                </a>
+        </div>
     </div>
-    <div class="container-fluid" id="form-container">
-        <form action="/" method="post">
-            {% csrf_token %}
-            {% for field in form.visible_fields %}
-                {{ field.label }} <br />
-                {{ field }}
-                <br />
-            {% endfor %}
-            <br/>
-            <input type="submit" value="Submit" />
-        </form>
+    <div class="container-fluid row" id="content-wrapper">
+        <h1>Username Lookup</h1>
+        <p>To retrieve your username, enter your 9-digit ID number and 6-digit birthdate below:</p>
+        <div class="col-md-2"></div>
+        <div class="col-md-8" id="form-container">
+            <form action="/" method="post">
+                {% csrf_token %}
+                {% for field in form.visible_fields %}
+                    {{ field.label }} <br />
+                    {{ field }}
+                    <br />
+                {% endfor %}
+                <br/>
+                <input type="submit" value="Submit" />
+            </form>
+            <div id="results">
+                {{ result }}
+            </div>
+        </div>
+        <div class="col-md-2"></div>
     </div>
-    <div id="results">
-        {{ result }}
-
-    </div>
+    <footer class="align_center">
+        <span>© 2015 Central New Mexico Community College - 525 Buena Vista Dr. SE, Albuquerque, NM 87106</span>
+    </footer>
 </body>
 </html>

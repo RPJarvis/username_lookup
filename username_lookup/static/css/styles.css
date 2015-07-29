@@ -1,0 +1,36 @@
+#content-container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#form-container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#header {
+    background-color: #003A70;
+    padding: 3px 3px 3px 3px;
+    height: 68px;
+    border-bottom: 4px solid #41b6e6;
+}
+
+#header img {
+    height: 60px;
+    width: auto;
+}
+
+body {
+   background-color: #fcf8e5;
+}
+
+footer {
+    color: white;
+    background-color: #003A70;
+    border-top: 3px solid #F6BE00;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+}
