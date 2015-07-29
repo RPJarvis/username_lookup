@@ -9,6 +9,7 @@ from lookup_form import common
             #062979
             #010037754
             #print(results[beg_flag:end_flag])
+            #010482287
 
 def index(request):
     context = RequestContext(request)
@@ -16,11 +17,15 @@ def index(request):
         form = Username_Query_Form(request.POST)
 
         if form.is_valid():
-            user_birthdate = form.cleaned_data['birthdate']
-            user_id = form.cleaned_data['id']
+            user_birthdate = str(form.cleaned_data['birthdate'])
+            user_id = str(form.cleaned_data['id'])
             results = str(search(build_query(user_birthdate, user_id)))
-            if results == '':
-                results = 'That didnt work'
+            print('results: ' + str(results))
+            if results == '[]':
+                result = 'That didnt work'
+                context_dict = {'form': form, 'result': result,}
+
+                return render_to_response('lookup_form/index.html', context_dict, context)
 
             beg_flag = results.find('mail') + 9
             print(beg_flag)
@@ -44,9 +49,12 @@ def index(request):
 
 def build_query(user_birthdate, user_id):
     #TODO: why is this chopping a digit?
-    birthdate_query = '(extensionAttribute4=' + str(0) + str(user_birthdate) + ')'
-    id_query = '(employeeID=' + str(0) + str(user_id) + ')'
-    #010482287
+    print(user_birthdate)
+    print(user_id)
+    birthdate_query = '(extensionAttribute4=' + str(user_birthdate) + ')'
+    id_query = '(employeeID=' + str(user_id) + ')'
+    print(id_query)
+    print(birthdate_query)
     final_query = '(&(objectClass=person)' + id_query + birthdate_query + ')'
 
     return final_query
