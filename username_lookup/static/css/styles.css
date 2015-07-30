@@ -27,9 +27,15 @@
     width: auto;
 }
 
+#main-container {
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
 #results {
     background-color: #ace788;
     border: 1px solid green;
+    padding: 4px 12px 4px 12px;
 }
 
 body {
@@ -46,8 +52,11 @@ footer {
 
 h1 {
     text-align: center;
+    font-family: 'Oswald', sans-serif;
 }
 
-#main-container {
-    padding: 0;
+.row {
+    margin-right: 0;
+    margin-left: 0;
 }
+
