@@ -17,7 +17,7 @@
 
 #header {
     background-color: #003A70;
-    padding: 3px 3px 3px 3px;
+    padding: 3px 12px 3px 12px;
     height: 68px;
     border-bottom: 4px solid #41b6e6;
 }
@@ -46,4 +46,8 @@ footer {
 
 h1 {
     text-align: center;
+}
+
+#main-container {
+    padding: 0;
 }

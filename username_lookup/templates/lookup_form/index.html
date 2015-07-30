@@ -14,44 +14,47 @@
     <title>CNM Username Lookup</title>
 </head>
 <body>
-    <div class="container-fluid">
-        <div id="header" class="row">
-            <a href="https://www.cnm.edu" role="navigation">
-                <img class="align_center" alt="Link to CNM Homepage" src="{% static "images/cnm-logo.png" %}">
-            </a>
-        </div>
-    </div>
-    <div class="container-fluid row" id="content-wrapper">
-        <h1>Username Lookup</h1>
-        <p>To retrieve your username, enter your 9-digit ID number and 6-digit birthdate below:</p>
-        <div class="col-md-2"></div>
-        <div class="col-md-8" id="form-container">
-            <form action="/" method="post">
-                {% csrf_token %}
-                {% for field in form.visible_fields %}
-                    {{ field.label }} <br />
-                    {{ field }}
-                    <br />
-                {% endfor %}
-                <br/>
-                <input type="submit" value="Submit" />
-            </form>
-            <br/>
-            {% if error %}
-                <div id="error">
-                    {{ error }}
+    <div class="container-fluid" id="main-container">
+        <div class="container-fluid">
+            <div id="header" class="row">
+                <a href="https://www.cnm.edu" role="navigation">
+                    <img class="align_center" alt="Link to CNM Homepage" src="{% static "images/cnm-logo.png" %}">
+                </a>
             </div>
-            {% endif %}
-            {%  if result %}
-                <div id="results">
-                    {{ result }}
-                </div>
-            {% endif %}
         </div>
-        <div class="col-md-2"></div>
+        <div class="container-fluid row" id="content-wrapper">
+            <h1>Username Lookup</h1>
+
+            <div class="col-md-2"></div>
+            <div class="col-md-8" id="form-container">
+                <p>To retrieve your username, enter your 9-digit ID number and 6-digit birthdate below:</p>
+                <form action="/" method="post">
+                    {% csrf_token %}
+                    {% for field in form.visible_fields %}
+                        {{ field.label }} <br />
+                        {{ field }}
+                        <br />
+                    {% endfor %}
+                    <br/>
+                    <input type="submit" value="Submit" />
+                </form>
+                <br/>
+                {% if error %}
+                    <div id="error">
+                        {{ error }}
+                </div>
+                {% endif %}
+                {%  if result %}
+                    <div id="results">
+                        {{ result }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <footer class="align_center">
+            <span>© 2015 Central New Mexico Community College - 525 Buena Vista Dr. SE, Albuquerque, NM 87106</span>
+        </footer>
     </div>
-    <footer class="align_center">
-        <span>© 2015 Central New Mexico Community College - 525 Buena Vista Dr. SE, Albuquerque, NM 87106</span>
-    </footer>
 </body>
 </html>
