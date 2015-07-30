@@ -21,6 +21,7 @@ def index(request):
             user_id = str(form.cleaned_data['id'])
             results = str(search(build_query(user_birthdate, user_id)))
             print('results: ' + str(results))
+
             if results == '[]':
                 result = 'No results found based on what you entered'
                 context_dict = {'form': form, 'result': result,}
@@ -34,10 +35,17 @@ def index(request):
             context_dict = {'form': form, 'result': result,}
 
             return render_to_response('lookup_form/index.html', context_dict, context)
+
         else:
-            form = Username_Query_Form()
-            error = 'The text you entered in the Captcha box was incorrect. Please try again.'
+            error = ''
+            if form.data['birthdate'] == '':
+                error += 'Please enter a birthdate.\n'
+            if form.data['id'] == '':
+                error += 'Please enter an ID number.\n'
+            if form.data['birthdate'] != '' and form.data['id'] != '':
+                error = 'The text you entered in the Captcha box was incorrect. Please try again.'
             context_dict = {'form': form, 'error': error}
+
             return render_to_response('lookup_form/index.html', context_dict, context)
     else:
         form = Username_Query_Form()

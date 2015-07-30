@@ -7,6 +7,7 @@
     background-color: #df684e;
     border: 1px solid red;
     color: black;
+    padding: 4px 12px 4px 12px;
 }
 
 #form-container {
@@ -24,6 +25,11 @@
 #header img {
     height: 60px;
     width: auto;
+}
+
+#results {
+    background-color: #ace788;
+    border: 1px solid green;
 }
 
 body {
