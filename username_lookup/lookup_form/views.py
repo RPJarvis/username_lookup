@@ -22,7 +22,7 @@ def index(request):
             results = str(search(build_query(user_birthdate, user_id)))
             print('results: ' + str(results))
             if results == '[]':
-                result = 'That didnt work'
+                result = 'No results found based on what you entered'
                 context_dict = {'form': form, 'result': result,}
 
                 return render_to_response('lookup_form/index.html', context_dict, context)
@@ -35,11 +35,10 @@ def index(request):
 
             return render_to_response('lookup_form/index.html', context_dict, context)
         else:
-            #TODO:make this less dumb
-            return HttpResponse(
-                json.dumps({"Something broke": "fix it"}),
-                content_type="application/json"
-            )
+            form = Username_Query_Form()
+            error = 'The text you entered in the Captcha box was incorrect. Please try again.'
+            context_dict = {'form': form, 'error': error}
+            return render_to_response('lookup_form/index.html', context_dict, context)
     else:
         form = Username_Query_Form()
         context_dict = {'form': form}

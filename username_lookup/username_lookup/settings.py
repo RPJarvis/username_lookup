@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from lookup_form import common
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -31,13 +32,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
+    #'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
+    #'django.contrib.sessions',
     'django.contrib.staticfiles',
-    'lookup_form'
+    #'django.contrib.messages',
+
+    'lookup_form',
+    'captcha'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -113,3 +116,8 @@ STATICFILES_DIRS = (
 )
 
 STATIC_ROOT = PROJECT_PATH + '/static_files'
+
+RECAPTCHA_PUBLIC_KEY = '6LdqjAoTAAAAABcaSzj0c1d-20iOPclOea2w_Nyy'
+
+RECAPTCHA_PRIVATE_KEY = common.RECAPTCHA_PRIVATE_KEY
+

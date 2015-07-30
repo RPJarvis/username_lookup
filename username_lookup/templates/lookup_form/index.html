@@ -16,9 +16,9 @@
 <body>
     <div class="container-fluid">
         <div id="header" class="row">
-                <a href="https://www.cnm.edu" role="navigation">
-                    <img class="align_center" alt="Link to CNM Homepage" src="{% static "images/cnm-logo.png" %}">
-                </a>
+            <a href="https://www.cnm.edu" role="navigation">
+                <img class="align_center" alt="Link to CNM Homepage" src="{% static "images/cnm-logo.png" %}">
+            </a>
         </div>
     </div>
     <div class="container-fluid row" id="content-wrapper">
@@ -36,6 +36,12 @@
                 <br/>
                 <input type="submit" value="Submit" />
             </form>
+            <br/>
+            <div id="error">
+                {% if error %}
+                    {{ error }}
+                {% endif %}
+            </div>
             <div id="results">
                 {{ result }}
             </div>

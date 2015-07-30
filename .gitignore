@@ -2,3 +2,4 @@ common.py
 *.pyc
 *.xml
 *.idea
+*.swp
