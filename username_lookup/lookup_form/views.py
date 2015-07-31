@@ -20,28 +20,28 @@ def index(request):
             user_birthdate = str(form.cleaned_data['birthdate'])
             user_id = str(form.cleaned_data['id'])
             results = str(search(build_query(user_birthdate, user_id)))
-            print('results: ' + str(results))
 
             if results == '[]':
-                result = 'No results found based on what you entered'
-                context_dict = {'form': form, 'result': result,}
+                result = 'No results found based on what you entered. Try again or call the ITS Service Desk at (505) ' \
+                         '224-4357.'
+                context_dict = {'form': form, 'result': result}
 
                 return render_to_response('lookup_form/index.html', context_dict, context)
 
             beg_flag = results.find('mail') + 9
-            print(beg_flag)
             end_flag = results.find('@cnm.edu')
+            error = form.errors.as_data()
             result = 'Your username is: ' + results[beg_flag:end_flag]
-            context_dict = {'form': form, 'result': result,}
+            context_dict = {'form': form, 'result': result, 'error': error}
 
             return render_to_response('lookup_form/index.html', context_dict, context)
 
         else:
             error = ''
             if form.data['birthdate'] == '':
-                error += 'Please enter a birthdate.\n'
+                error += 'Please enter your 6-digit birthdate.\n'
             if form.data['id'] == '':
-                error += 'Please enter an ID number.\n'
+                error += 'Please enter your 9-digit ID number.\n'
             if form.data['birthdate'] != '' and form.data['id'] != '':
                 error = 'The text you entered in the Captcha box was incorrect. Please try again.'
             context_dict = {'form': form, 'error': error}
@@ -55,13 +55,8 @@ def index(request):
 
 
 def build_query(user_birthdate, user_id):
-    #TODO: why is this chopping a digit?
-    print(user_birthdate)
-    print(user_id)
     birthdate_query = '(extensionAttribute4=' + str(user_birthdate) + ')'
     id_query = '(employeeID=' + str(user_id) + ')'
-    print(id_query)
-    print(birthdate_query)
     final_query = '(&(objectClass=person)' + id_query + birthdate_query + ')'
 
     return final_query
