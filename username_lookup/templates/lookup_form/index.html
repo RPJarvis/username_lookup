@@ -25,21 +25,43 @@
         <div class="row" id="content-wrapper">
             <h1>Username Lookup</h1>
             <div class="col-md-2"></div>
-            <div class="col-md-8" id="form-container">
-                <p>
-                    To retrieve your username, enter your 9-digit ID number and 6-digit birthdate below:
-                </p>
+            <div class="col-md-4" id="form-container">
                 <form action="/" method="post">
                     {% csrf_token %}
                     {% for field in form.visible_fields %}
-                        {{ field.label }}
-                        <br />
-                        {{ field }}
-                        <br />
+                        <div class="field-container">
+                            {{ field.label }}
+                            <br />
+                            {{ field }}
+                            <br />
+                        </div>
                     {% endfor %}
                     <input type="submit" value="Submit" />
                 </form>
                 <br/>
+            </div>
+            <div class="col-md-4" id="instructions">
+                <p>
+                    ID Number: Your Student ID Number was given to you when you were admitted to CNM.
+                    It is also printed at the bottom of your student ID card. It is a
+                    nine-digit number. Please enter all digits including leading zeroes.
+                    If you do not know your ID number, please go to Student Services with a photo ID.
+                </p>
+                <p>
+                    Birthdate: Please enter your birthdate using two digits each for month, day, and
+                    year. For example, if you were born June 10, 1983 you would write 061083.
+                </p>
+                <p>
+                    Captcha: "Captcha" images help us to determine that a real person has clicked "Submit"
+                    to initiate the lookup. We use them to protect unauthorized malicious access to your
+                    account. Please type the letters as they appear in the box, do not include any spaces.
+                </p>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
                 {% if error or form.errors %}
                     <div id="error">
                         {{ form.errors }}

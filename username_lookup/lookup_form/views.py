@@ -1,11 +1,9 @@
-from django.shortcuts import render_to_response, HttpResponse
+from django.shortcuts import render_to_response
 from django.template import RequestContext
-from .models import Username_Query
 import ldap
-import json
 from .forms import Username_Query_Form
 from lookup_form import common
-from django.forms import Field
+
 # Create your views here.
             #062979
             #010037754
