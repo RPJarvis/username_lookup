@@ -26,7 +26,9 @@
             <h1>Username Lookup</h1>
             <div class="col-md-2"></div>
             <div class="col-md-8" id="form-container">
-                <p>To retrieve your username, enter your 9-digit ID number and 6-digit birthdate below:</p>
+                <p>
+                    To retrieve your username, enter your 9-digit ID number and 6-digit birthdate below:
+                </p>
                 <form action="/" method="post">
                     {% csrf_token %}
                     {% for field in form.visible_fields %}

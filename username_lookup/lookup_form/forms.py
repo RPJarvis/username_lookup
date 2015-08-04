@@ -5,26 +5,22 @@ from django.core.validators import validate_integer, ValidationError
 from django.core.validators import RegexValidator
 
 class Username_Query_Form(forms.Form):
-   # numeric = RegexValidator(r'^[0-9]+', 'Numbers only, please.')
-   #^[0-9]*$
+    def validate_fields(value):
+        if (validate_integer(value) == False):
+            raise forms.ValidationError('Numbers only please.')
+        return value
 
-    id = forms.CharField(max_length=9, label='ID Number', initial='<xxxxxxxxx>')
-    birthdate = forms.CharField(max_length=6, label='Birthdate', initial='<MMDDYY>')
+    id = forms.CharField(min_length=9, max_length=9, label='ID Number', validators=[validate_fields],
+                         error_messages={'invalid': 'Numbers only please.'})
+
+    birthdate = forms.CharField(min_length=6, max_length=6, label='Birthdate', validators=[validate_fields],
+                                error_messages={'invalid': 'Numbers only please.'})
     captcha = ReCaptchaField()
-
-    def clean(self):
-        cd = self.cleaned_data
-        if (validate_integer(cd.get('id')) == False):
-            raise ValidationError('Numbers only please.')
-        if (validate_integer(cd.get('birthdate')) == False):
-            raise ValidationError('Numbers only please.')
-
-        return cd
 
     class Meta:
         model = Username_Query
         fields = ('id', 'birthdate')
 
-        labels = {
-            'id': 'Nine digit ID number',
-        }
+
+
+

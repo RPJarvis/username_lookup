@@ -5,6 +5,7 @@ import ldap
 import json
 from .forms import Username_Query_Form
 from lookup_form import common
+from django.forms import Field
 # Create your views here.
             #062979
             #010037754
@@ -37,15 +38,8 @@ def index(request):
             return render_to_response('lookup_form/index.html', context_dict, context)
 
         else:
-            error = ''
-            if form.data['birthdate'] == '':
-                error += 'Please enter your 6-digit birthdate.\n'
-            if form.data['id'] == '':
-                error += 'Please enter your 9-digit ID number.\n'
-            if form.data['birthdate'] != '' and form.data['id'] != '':
-                error = 'The text you entered in the Captcha box was incorrect. Please try again.'
-            context_dict = {'form': form, 'error': error}
 
+            context_dict = {'form': form,}
             return render_to_response('lookup_form/index.html', context_dict, context)
     else:
         form = Username_Query_Form()
