@@ -24,7 +24,6 @@
         </div>
         <div class="row" id="content-wrapper">
             <h1>Username Lookup</h1>
-
             <div class="col-md-2"></div>
             <div class="col-md-8" id="form-container">
                 <p>To retrieve your username, enter your 9-digit ID number and 6-digit birthdate below:</p>
@@ -39,10 +38,11 @@
                     <input type="submit" value="Submit" />
                 </form>
                 <br/>
-                {% if error %}
+                {% if error or form.errors %}
                     <div id="error">
+                        {{ form.errors }}
                         {{ error }}
-                </div>
+                    </div>
                 {% endif %}
                 {%  if result %}
                     <div id="results">
