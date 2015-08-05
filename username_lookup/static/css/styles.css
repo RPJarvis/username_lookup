@@ -71,3 +71,32 @@ h1 {
     margin-left: 0;
 }
 
+@media (max-width: 580px) {
+   html{
+       text-align: center;
+   }
+   input {
+       height: 34px;
+       width: 80%;
+   }
+   form {
+       font-size: 20px;
+   }
+   #error {
+       margin-bottom: 8px;
+   }
+   #form-container {
+       padding-bottom: 8px;
+   }
+   #instructions {
+       padding-top: 8px;
+   }
+   #recaptcha_response_field {
+       font-size: 18px;
+   }
+   #recaptcha_widget_div {
+       width: 80%;
+       margin-left: 10%;
+       margin-right: 10%;
+   }
+}
