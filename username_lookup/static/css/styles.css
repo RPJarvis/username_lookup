@@ -1,5 +1,5 @@
-#content-container {
-    padding-top: 20px;
+#content-wrapper {
+    padding-top: 0;
     padding-bottom: 20px;
 }
 
@@ -32,6 +32,14 @@
     padding-top: 22px;
 }
 
+#header-instructions p {
+    margin-bottom: 4px;
+}
+
+#header-instructions {
+    margin-top: 18px;
+}
+
 #main-container {
     padding: 0;
     font-family: 'Lato', sans-serif;
@@ -43,6 +51,7 @@
     padding: 4px 12px 4px 12px;
     color: black;
     margin-bottom: 18px;
+    font-weight: bold;
 }
 
 body {
@@ -85,18 +94,19 @@ li {
 }
 
 @media (max-width: 580px) {
-   html{
+   html {
        text-align: center;
    }
    input {
-       height: 34px;
+       height: 30px;
        width: 80%;
    }
    form {
        font-size: 20px;
    }
    #error {
-       margin-bottom: 8px;
+       margin-top: 8px;
+       margin-bottom: 0;
    }
    #form-container {
        padding-bottom: 8px;
@@ -104,12 +114,15 @@ li {
    #instructions {
        padding-top: 8px;
    }
-   #recaptcha_response_field {
-       font-size: 18px;
-   }
+
    #recaptcha_widget_div {
        width: 80%;
        margin-left: 10%;
        margin-right: 10%;
    }
 }
+
+.recaptcha_r8_c1, .recaptcha_r7_c1 {
+    display: none;
+}
+

@@ -26,7 +26,6 @@
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <h1>Username Lookup</h1>
-
                 {% if form.errors %}
                     <div id="error">
                         {% if form.id.errors %}
@@ -38,7 +37,6 @@
                         {% if form.captcha.errors %}
                             Captcha: {{ form.captcha.errors }}
                         {% endif %}
-
                     </div>
                 {% endif %}
                 {%  if result %}
@@ -46,6 +44,15 @@
                         {{ result }}
                     </div>
                 {% endif %}
+                {% if not result and not form.errors %}
+                    <div id="header-instructions">
+                        <p>
+                            Please enter the information below to help us find your username. Please note, if you
+                            were just admitted to CNM it may take up to 60 miutes for your account to be created.
+                        </p>
+                    </div>
+                {% endif %}
+
             </div>
             <div class="col-md-2"></div>
         </div>
