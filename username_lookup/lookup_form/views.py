@@ -28,9 +28,9 @@ def index(request):
 
             beg_flag = results.find('mail') + 9
             end_flag = results.find('@cnm.edu')
-            error = form.errors.as_data()
+            form_error = form.errors.as_data()
             result = 'Your username is: ' + results[beg_flag:end_flag]
-            context_dict = {'form': form, 'result': result, 'error': error}
+            context_dict = {'form': form, 'result': result, 'error': form_error}
 
             return render_to_response('lookup_form/index.html', context_dict, context)
 

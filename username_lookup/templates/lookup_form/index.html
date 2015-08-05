@@ -22,8 +22,34 @@
                 </a>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h1>Username Lookup</h1>
+
+                {% if form.errors %}
+                    <div id="error">
+                        {% if form.id.errors %}
+                            ID: {{ form.id.errors }}
+                        {% endif %}
+                        {% if form.birthdate.errors %}
+                            Birthdate: {{ form.birthdate.errors }}
+                        {% endif %}
+                        {% if form.captcha.errors %}
+                            Captcha: {{ form.captcha.errors }}
+                        {% endif %}
+
+                    </div>
+                {% endif %}
+                {%  if result %}
+                    <div id="results">
+                        {{ result }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="col-md-2"></div>
+        </div>
         <div class="row" id="content-wrapper" role="main">
-            <h1>Username Lookup</h1>
             <div class="col-md-2"></div>
             <div class="col-md-4" id="form-container" role="form">
                 <form action="/" method="post">
@@ -59,23 +85,7 @@
             </div>
             <div class="col-md-2"></div>
         </div>
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                {% if error or form.errors %}
-                    <div id="error">
-                        {{ form.errors }}
-                        {{ error }}
-                    </div>
-                {% endif %}
-                {%  if result %}
-                    <div id="results">
-                        {{ result }}
-                    </div>
-                {% endif %}
-            </div>
-            <div class="col-md-2"></div>
-        </div>
+
         <footer class="align_center">
             <span>© 2015 Central New Mexico Community College - 525 Buena Vista Dr. SE, Albuquerque, NM 87106</span>
         </footer>
