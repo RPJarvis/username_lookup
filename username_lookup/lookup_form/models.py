@@ -5,9 +5,9 @@ from django.core.validators import validate_integer, ValidationError
 class Username_Query(models.Model):
    # numeric = RegexValidator(r'^[0-9]+', 'Numbers only, please.')
 
-    id = forms.CharField(min_length=9, max_length=9, label='ID Number',
+    id_number = models.CharField(verbose_name="ID Number", max_length=9,
                          error_messages={'invalid': 'Numbers only please.'})
-    birthdate = forms.CharField(min_length=6, max_length=6, label='Birthdate',
+    birthdate = models.CharField(verbose_name="Birthdate", max_length=6,
                                 error_messages={'invalid': 'Numbers only please.'})
 
 
@@ -19,4 +19,7 @@ class Username_Query(models.Model):
             raise ValidationError(u'Numbers only please.')
 
         return cd
-# Create your models here.
+# id = models.CharField(verbose_name="ID Number", min_length=9, max_length=9, label='ID Number',
+                    #     error_messages={'invalid': 'Numbers only please.'})
+#birthdate = models.CharField(verbose_name="Birthdate", min_length=6, max_length=6, label='Birthdate',
+                          #      error_messages={'invalid': 'Numbers only please.'})

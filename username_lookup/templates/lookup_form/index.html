@@ -22,10 +22,10 @@
                 </a>
             </div>
         </div>
-        <div class="row" id="content-wrapper">
+        <div class="row" id="content-wrapper" role="main">
             <h1>Username Lookup</h1>
             <div class="col-md-2"></div>
-            <div class="col-md-4" id="form-container">
+            <div class="col-md-4" id="form-container" role="form">
                 <form action="/" method="post">
                     {% csrf_token %}
                     {% for field in form.visible_fields %}
@@ -36,19 +36,19 @@
                             <br />
                         </div>
                     {% endfor %}
-                    <input type="submit" value="Submit" />
+                    <input type="submit" value="Submit" role="button"/>
                 </form>
                 <br/>
             </div>
-            <div class="col-md-4" id="instructions">
+            <div class="col-md-4" id="instructions" role="dialog">
                 <p>
-                    ID Number: Your Student ID Number was given to you when you were admitted to CNM.
-                    It is also printed at the bottom of your student ID card. It is a
-                    nine-digit number. Please enter all digits including leading zeroes.
-                    If you do not know your ID number, please go to Student Services with a photo ID.
+                    ID Number: Your Student ID Number is a nine-digit number that was given to you when
+                    you were admitted to CNM. It is also printed at the bottom of your student ID card.
+                    Enter all digits including leading zeroes. If you do not know your ID number,
+                    please go to Student Services with a photo ID.
                 </p>
                 <p>
-                    Birthdate: Please enter your birthdate using two digits each for month, day, and
+                    Birthdate: Enter your birthdate using two digits each for month, day, and
                     year. For example, if you were born June 10, 1983 you would write 061083.
                 </p>
                 <p>

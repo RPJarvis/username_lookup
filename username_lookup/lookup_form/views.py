@@ -4,7 +4,6 @@ import ldap
 from .forms import Username_Query_Form
 from lookup_form import common
 
-# Create your views here.
             #062979
             #010037754
             #print(results[beg_flag:end_flag])
