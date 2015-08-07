@@ -48,7 +48,7 @@
                     <div id="header-instructions">
                         <p>
                             Please enter the information below to help us find your username. Please note, if you
-                            were just admitted to CNM it may take up to 60 miutes for your account to be created.
+                            were just admitted to CNM it may take up to 60 minutes for your account to be created.
                         </p>
                     </div>
                 {% endif %}
@@ -63,7 +63,7 @@
                     {% csrf_token %}
                     {% for field in form.visible_fields %}
                         <div class="field-container">
-                            {{ field.label }}
+                            <b>{{ field.label }}</b>
                             <br />
                             {{ field }}
                             <br />
@@ -75,17 +75,17 @@
             </div>
             <div class="col-md-4" id="instructions" role="dialog">
                 <p>
-                    ID Number: Your Student ID Number is a nine-digit number that was given to you when
+                    <b>ID Number</b>: Your Student ID Number is a nine-digit number that was given to you when
                     you were admitted to CNM. It is also printed at the bottom of your student ID card.
                     Enter all digits including leading zeroes. If you do not know your ID number,
                     please go to Student Services with a photo ID.
                 </p>
                 <p>
-                    Birthdate: Enter your birthdate using two digits each for month, day, and
+                    <b>Birthdate</b>: Enter your birthdate using two digits each for month, day, and
                     year. For example, if you were born June 10, 1983 you would write 061083.
                 </p>
                 <p>
-                    Captcha: "Captcha" images help us to determine that a real person has clicked "Submit"
+                    <b>Captcha</b>: "Captcha" images help us to determine that a real person has clicked "Submit"
                     to initiate the lookup. We use them to protect unauthorized malicious access to your
                     account. Please type the letters as they appear in the box, do not include any spaces.
                 </p>
