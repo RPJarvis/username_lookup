@@ -10,7 +10,6 @@ def index(request):
     context = RequestContext(request)
     if request.method == 'POST':
         form = Username_Query_Form(request.POST)
-
         if form.is_valid():
             user_birthdate = str(form.cleaned_data['birthdate'])
             user_id = str(form.cleaned_data['id'])
@@ -23,18 +22,14 @@ def index(request):
                 if results == '[]':
                     result = 'No results found based on what you entered. Try again or call the ITS Service Desk at (505) ' \
                              '224-4357.'
-                beg_flag = results.find('mail') + 9
-                end_flag = results.find('@cnm.edu')
                 form_error = form.errors.as_data()
-                result = 'Your username is: ' + results[beg_flag:end_flag]
+                result = parse_username(results)
                 context_dict = {'form': form, 'result': result, 'error': form_error}
 
                 return render_to_response('lookup_form/index.html', context_dict, context)
 
-            beg_flag = results.find('mail') + 9
-            end_flag = results.find('@cnm.edu')
             form_error = form.errors.as_data()
-            result = 'Your username is: ' + results[beg_flag:end_flag]
+            result = parse_username(results)
             context_dict = {'form': form, 'result': result, 'error': form_error}
 
             return render_to_response('lookup_form/index.html', context_dict, context)
@@ -56,6 +51,14 @@ def build_query(user_birthdate, user_id):
     final_query = '(&(objectClass=person)' + id_query + birthdate_query + ')'
 
     return final_query
+
+
+def parse_username(results):
+    beg_flag = results.find('mail') + 9
+    end_flag = results.find('@cnm.edu')
+    result = 'Your username is: ' + results[beg_flag:end_flag]
+
+    return result
 
 
 def search(query, check_staff):
