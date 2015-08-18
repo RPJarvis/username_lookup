@@ -35,8 +35,8 @@ def index(request):
             return render_to_response('lookup_form/index.html', context_dict, context)
 
         else:
-
             context_dict = {'form': form,}
+
             return render_to_response('lookup_form/index.html', context_dict, context)
     else:
         form = Username_Query_Form()
