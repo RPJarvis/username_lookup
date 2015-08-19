@@ -1,3 +1,4 @@
 Django==1.8.3
+django-nocaptcha-recaptcha==0.0.18
 python-ldap==2.4.20
 wsgiref==0.1.2

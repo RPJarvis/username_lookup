@@ -19,9 +19,12 @@ def index(request):
                 check_staff = False
                 results = str(search(build_query(user_birthdate, user_id), check_staff))
                 result = ''
-                if results == '[]':
-                    result = 'No results found based on what you entered. Try again or call the ITS Service Desk at (505) ' \
-                             '224-4357.'
+                #if results == '[]':
+                #    result = 'No results found based on what you entered. Try again or call the ITS Service Desk at (505) ' \
+                #             '224-4357.'
+                #    print(results)
+                #    print(result)
+                #print(results)
                 form_error = form.errors.as_data()
                 result = parse_username(results)
                 context_dict = {'form': form, 'result': result, 'error': form_error}
@@ -54,10 +57,13 @@ def build_query(user_birthdate, user_id):
 
 
 def parse_username(results):
-    beg_flag = results.find('mail') + 9
-    end_flag = results.find('@cnm.edu')
-    result = 'Your username is: ' + results[beg_flag:end_flag]
-
+    print(results)
+    if results != '[]':
+        beg_flag = results.find('mail') + 9
+        end_flag = results.find('@cnm.edu')
+        result = 'Your username is: ' + results[beg_flag:end_flag]
+    else:
+        result = 'No results found based on what you entered. Try again or call the ITS Service Desk at (505) 224-4357.'
     return result
 
 

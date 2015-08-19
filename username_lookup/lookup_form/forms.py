@@ -1,6 +1,6 @@
 from django import forms
 from .models import Username_Query
-from captcha.fields import ReCaptchaField
+from nocaptcha_recaptcha.fields import NoReCaptchaField
 from django.core.validators import validate_integer, ValidationError
 from django.core.validators import RegexValidator
 
@@ -25,7 +25,8 @@ class Username_Query_Form(forms.Form):
                                     'invalid': 'Numbers only please. ',
                                     'min_length': 'Ensure this value has 6 characters.'
                                 })
-    captcha = ReCaptchaField()
+    #captcha = ReCaptchaField()
+    captcha = NoReCaptchaField()
 
     class Meta:
         model = Username_Query

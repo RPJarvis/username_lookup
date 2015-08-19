@@ -36,12 +36,11 @@ INSTALLED_APPS = (
     #'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    #'django.contrib.sessions',
+    'django.contrib.sessions',
     'django.contrib.staticfiles',
     #'django.contrib.messages',
-
+    'nocaptcha_recaptcha',
     'lookup_form',
-    'captcha'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -118,7 +117,9 @@ STATICFILES_DIRS = (
 
 STATIC_ROOT = PROJECT_PATH + '/static_files'
 
-RECAPTCHA_PUBLIC_KEY = '6LdqjAoTAAAAABcaSzj0c1d-20iOPclOea2w_Nyy'
 
-RECAPTCHA_PRIVATE_KEY = common.RECAPTCHA_PRIVATE_KEY
+NORECAPTCHA_SITE_KEY = '6LdqjAoTAAAAABcaSzj0c1d-20iOPclOea2w_Nyy'
+#RECAPTCHA_PUBLIC_KEY = '6LdqjAoTAAAAABcaSzj0c1d-20iOPclOea2w_Nyy'
+NORECAPTCHA_SECRET_KEY = common.RECAPTCHA_PRIVATE_KEY
+#RECAPTCHA_PRIVATE_KEY = common.RECAPTCHA_PRIVATE_KEY
 
