@@ -117,14 +117,10 @@ li {
        padding-top: 8px;
    }
 
-   #recaptcha_widget_div {
-       width: 80%;
-       margin-left: 10%;
-       margin-right: 10%;
+   .g-recapthca {
+       margin-left: 30px !important;
    }
 }
 
-.recaptcha_r8_c1, .recaptcha_r7_c1 {
-    display: none;
-}
+
 
