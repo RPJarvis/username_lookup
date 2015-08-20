@@ -19,12 +19,6 @@ def index(request):
                 check_staff = False
                 results = str(search(build_query(user_birthdate, user_id), check_staff))
                 result = ''
-                #if results == '[]':
-                #    result = 'No results found based on what you entered. Try again or call the ITS Service Desk at (505) ' \
-                #             '224-4357.'
-                #    print(results)
-                #    print(result)
-                #print(results)
                 form_error = form.errors.as_data()
                 result = parse_username(results)
                 context_dict = {'form': form, 'result': result, 'error': form_error}
