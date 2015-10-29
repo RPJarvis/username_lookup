@@ -57,7 +57,7 @@ def parse_username(results):
         end_flag = results.find('@cnm.edu')
         result = 'Your username is: ' + results[beg_flag:end_flag]
     else:
-        result = 'No results found based on what you entered. Try again or call the ITS Service Desk at (505) 224-4357.'
+        result = 'No results found. Try again or call the ITS Service Desk at (505) 224-4357.'
     return result
 
 

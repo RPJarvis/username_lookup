@@ -7,7 +7,7 @@ class Username_Query(models.Model):
 
     id_number = models.CharField(verbose_name="ID Number", max_length=9,
                          error_messages={'invalid': 'Numbers only please.'})
-    birthdate = models.CharField(verbose_name="Birthdate", max_length=6,
+    birthdate = models.CharField(verbose_name="Birthdate <MMDDYY>", max_length=6,
                                 error_messages={'invalid': 'Numbers only please.'})
 
 

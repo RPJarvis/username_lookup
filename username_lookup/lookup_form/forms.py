@@ -16,7 +16,7 @@ class Username_Query_Form(forms.Form):
                             'min_length': 'Ensure this value has 9 characters.'
                         })
 
-    birthdate = forms.CharField(min_length=6, max_length=6, label='Birthdate', validators=[validate_fields],
+    birthdate = forms.CharField(min_length=6, max_length=6, label='Birthdate <MMDDYY>', validators=[validate_fields],
                                 error_messages = {
                                     'invalid': 'Numbers only please. ',
                                     'min_length': 'Ensure this value has 6 characters.'
